@@ -7,7 +7,7 @@
 
   <groupId>ru.DADA</groupId>
   <artifactId>TypeStorm</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <version>0.0.1-SNAPSHOT</version>
   <name>TypeStorm Maven Webapp</name>
 
@@ -52,6 +52,12 @@
     <dependency>
       <groupId>org.springframework.data</groupId>
       <artifactId>spring-data-jpa</artifactId>
+      <version>3.2.2</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
       <version>3.2.2</version>
     </dependency>
   </dependencies>
