@@ -14,4 +14,20 @@ public class AbstractWord {
 
     @Column(name = "frequency_rank", nullable = false)
     private Long frequencyRank;
+    
+    public String getWord() {
+        return word;
+    }
+
+    public Long getFrequencyRank() {
+        return frequencyRank;
+    }
+
+    public void setFrequencyRank(Long frequencyRank) {
+        this.frequencyRank = frequencyRank;
+    }
+
+    public void setWord(String word) {
+        this.word = word;
+    }
 }
