@@ -37,7 +37,11 @@ build/
 
 *.log
 logs/
+
 .env
+*.env
+!example.env
 .env.local
+
 application-local.yml
 application-local.properties
