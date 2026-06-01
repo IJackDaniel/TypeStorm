@@ -7,13 +7,11 @@ import ru.dada.typestorm.repository.AbstractWordRepository;
 
 import java.util.List;
 
-@Service
-public class WordService<T extends AbstractWord> {
+public abstract class WordService<T extends AbstractWord> {
 
     private final AbstractWordRepository<T> repository;
 
-    @Autowired
-    public WordService(AbstractWordRepository<T> repository) {
+    protected WordService(AbstractWordRepository<T> repository) {
         this.repository = repository;
     }
 
