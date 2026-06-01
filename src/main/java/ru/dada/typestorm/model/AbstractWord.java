@@ -14,7 +14,7 @@ public class AbstractWord {
 
     @Column(name = "frequency_rank", nullable = false)
     private Long frequencyRank;
-    
+
     public String getWord() {
         return word;
     }
