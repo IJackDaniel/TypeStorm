@@ -20,7 +20,7 @@ public class RandomWordSequenceGenerator<T extends AbstractWord> {
         Random random = new Random();
         List<T> randomWords = new ArrayList<>();
 
-        for (int i = 0; i <= count; i++) {
+        for (int i = 0; i < count; i++) {
             randomWords.add(words.get(random.nextInt(words.size())));
         }
 
