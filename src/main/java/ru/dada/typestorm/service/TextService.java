@@ -29,6 +29,10 @@ public class TextService {
     }
 
     private List<Word> selectRandomWords(List<Word> words, int count) {
+        if (words == null || words.isEmpty()) {
+            throw new IllegalArgumentException("\"Word list must not be null or empty");
+        }
+
         ThreadLocalRandom random = ThreadLocalRandom.current();
         List<Word> randomWords = new ArrayList<>();
 
