@@ -5,6 +5,7 @@ import ru.dada.typestorm.model.DictionaryType;
 import ru.dada.typestorm.model.Word;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Component
 public class TextService {
@@ -28,7 +29,7 @@ public class TextService {
     }
 
     private List<Word> selectRandomWords(List<Word> words, int count) {
-        Random random = new Random();
+        ThreadLocalRandom random = ThreadLocalRandom.current();
         List<Word> randomWords = new ArrayList<>();
 
         for (int i = 0; i < count; i++) {
