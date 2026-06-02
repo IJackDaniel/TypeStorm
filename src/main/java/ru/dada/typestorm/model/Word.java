@@ -14,7 +14,7 @@ public class Word {
     private String word;
 
     @Column(name = "frequency_rank", nullable = false)
-    private Long frequencyRank;
+    private Integer frequencyRank;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "dictionary_type", nullable = false)
@@ -24,11 +24,11 @@ public class Word {
         return word;
     }
 
-    public Long getFrequencyRank() {
+    public Integer getFrequencyRank() {
         return frequencyRank;
     }
 
-    public void setFrequencyRank(Long frequencyRank) {
+    public void setFrequencyRank(Integer frequencyRank) {
         this.frequencyRank = frequencyRank;
     }
 
