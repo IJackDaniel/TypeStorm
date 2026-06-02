@@ -1,6 +1,5 @@
 package ru.dada.typestorm.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.dada.typestorm.model.DictionaryType;
 import ru.dada.typestorm.model.Word;
@@ -9,22 +8,26 @@ import java.util.*;
 
 @Component
 public class TextService {
-    @Autowired
-    WordService service;
+
+    private final WordService service;
+
+    public TextService(WordService service) {
+        this.service = service;
+    }
 
     public String getRandomStringSequenceFromTopDictionary(int limit, int count, DictionaryType dictionaryType) {
         List<Word> words = service.getTopWordsFromDictionary(dictionaryType, limit);
-        List<Word> randomWords = this.getRandomValuesWithCountLimit(words, count);
-        return this.WordsAsString(randomWords);
+        List<Word> randomWords = this.selectRandomWords(words, count);
+        return this.joinWords(randomWords);
     }
 
     public String getRandomStringSequenceFromDictionary(int count, DictionaryType dictionaryType) {
         List<Word> words = service.getAllWordsFromDictionary(dictionaryType);
-        List<Word> randomWords = this.getRandomValuesWithCountLimit(words, count);
-        return this.WordsAsString(randomWords);
+        List<Word> randomWords = this.selectRandomWords(words, count);
+        return this.joinWords(randomWords);
     }
 
-    private List<Word> getRandomValuesWithCountLimit(List<Word> words, int count) {
+    private List<Word> selectRandomWords(List<Word> words, int count) {
         Random random = new Random();
         List<Word> randomWords = new ArrayList<>();
 
@@ -35,7 +38,7 @@ public class TextService {
         return randomWords;
     }
 
-    private String WordsAsString(List<Word> words) {
+    private String joinWords(List<Word> words) {
         StringBuilder builder = new StringBuilder();
 
         for (Word word : words) {
