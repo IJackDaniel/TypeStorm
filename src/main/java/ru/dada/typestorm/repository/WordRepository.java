@@ -1,14 +1,18 @@
 package ru.dada.typestorm.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.stereotype.Repository;
+import ru.dada.typestorm.model.DictionaryType;
 import ru.dada.typestorm.model.Word;
 
 import java.util.List;
 
-@NoRepositoryBean
-public interface AbstractWordRepository<T extends Word> extends JpaRepository<T, Long> {
+@Repository
+public interface WordRepository extends JpaRepository<Word, Long> {
 
-    List<T> findByFrequencyRankLessThanEqual(Integer maxRank);
+    List<Word> findByDictionaryTypeAndFrequencyRankLessThanEqual(
+            DictionaryType dictionaryType,
+            Integer maxRank);
 
+    List<Word> findByDictionaryType(DictionaryType dictionaryType);
 }
