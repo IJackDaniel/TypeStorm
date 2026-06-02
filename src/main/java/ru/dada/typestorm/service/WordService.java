@@ -12,7 +12,7 @@ public class WordService {
 
     private final WordRepository repository;
 
-    protected WordService(WordRepository repository) {
+    public WordService(WordRepository repository) {
         this.repository = repository;
     }
 
