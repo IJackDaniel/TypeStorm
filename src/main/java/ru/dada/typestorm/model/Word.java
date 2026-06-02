@@ -2,8 +2,9 @@ package ru.dada.typestorm.model;
 
 import jakarta.persistence.*;
 
-@MappedSuperclass
-public class AbstractWord {
+@Entity
+@Table(name = "words")
+public class Word {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,6 +15,10 @@ public class AbstractWord {
 
     @Column(name = "frequency_rank", nullable = false)
     private Long frequencyRank;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "dictionary_type", nullable = false)
+    private DictionaryType dictionaryType;
 
     public String getWord() {
         return word;
