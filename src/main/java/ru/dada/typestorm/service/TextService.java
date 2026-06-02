@@ -10,27 +10,28 @@ import java.util.concurrent.ThreadLocalRandom;
 @Component
 public class TextService {
 
-    private final WordService service;
+    private final WordService wordService;
 
-    public TextService(WordService service) {
-        this.service = service;
+    public TextService(WordService wordService) {
+        this.wordService = wordService;
     }
 
+    // Параметров может стать больше, поэтому в будущем можно создать класс TypingSettings
     public String getRandomStringSequenceFromTopDictionary(int limit, int count, DictionaryType dictionaryType) {
-        List<Word> words = service.getTopWordsFromDictionary(dictionaryType, limit);
-        List<Word> randomWords = this.selectRandomWords(words, count);
+        List<Word> words = wordService.getTopWordsFromDictionary(dictionaryType, limit);
+        List<Word> randomWords = selectRandomWords(words, count);
         return this.joinWords(randomWords);
     }
 
     public String getRandomStringSequenceFromDictionary(int count, DictionaryType dictionaryType) {
-        List<Word> words = service.getAllWordsFromDictionary(dictionaryType);
-        List<Word> randomWords = this.selectRandomWords(words, count);
+        List<Word> words = wordService.getAllWordsFromDictionary(dictionaryType);
+        List<Word> randomWords = selectRandomWords(words, count);
         return this.joinWords(randomWords);
     }
 
     private List<Word> selectRandomWords(List<Word> words, int count) {
         if (words == null || words.isEmpty()) {
-            throw new IllegalArgumentException("\"Word list must not be null or empty");
+            throw new IllegalArgumentException("Word list must not be null or empty");
         }
 
         ThreadLocalRandom random = ThreadLocalRandom.current();
