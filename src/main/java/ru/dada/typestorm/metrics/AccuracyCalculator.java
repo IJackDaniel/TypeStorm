@@ -8,14 +8,14 @@ public class AccuracyCalculator {
         }
 
         int textLength = originalText.length();
-        int countMistakes = 0;
+        int mistakesCount = 0;
         for (int i = 0; i < textLength; i++) {
             if (originalText.charAt(i) != typedText.charAt(i)) {
-                countMistakes++;
+                mistakesCount++;
             }
         }
 
-        double accuracy = (double) (textLength - countMistakes) / textLength;
+        double accuracy = (double) (textLength - mistakesCount) / textLength;
 
         return (double) Math.round(accuracy * 100) /100;
     }
