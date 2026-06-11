@@ -5,14 +5,12 @@ public class SessionResult {
     private final double wpm;
     private final double accuracy;
     private final int durationSeconds;
-    private final int errorCount;
 
     public SessionResult(Session session, double wpm, double accuracy, int durationSeconds, int errorCount) {
         this.session = session;
         this.wpm = wpm;
         this.accuracy = accuracy;
         this.durationSeconds = durationSeconds;
-        this.errorCount = errorCount;
     }
 
     public Session getSession() {
@@ -31,10 +29,6 @@ public class SessionResult {
         return this.durationSeconds;
     }
 
-    public int getErrorCount() {
-        return this.errorCount;
-    }
-
     public String getFormattedWpm() {
         return String.format("%.1f", this.wpm);
     }
@@ -49,8 +43,7 @@ public class SessionResult {
                 .append("Result of the session:\n")
                 .append("words per minute: ").append(this.wpm).append("'\n")
                 .append("accuracy: ").append(this.accuracy).append("'\n")
-                .append("duration (in seconds): ").append(this.durationSeconds).append("'\n")
-                .append("error count: ").append(this.errorCount).append("'")
+                .append("duration (in seconds): ").append(this.durationSeconds).append("'")
                 .toString();
     }
 }

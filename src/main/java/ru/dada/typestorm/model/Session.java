@@ -7,12 +7,14 @@ public class Session {
     private String enteredText;
     private final LocalDateTime startTime;
     private LocalDateTime endTime;
+    private final int errorCount;
 
     public Session(String originalText) {
         this.originalText = originalText;
         this.enteredText = "";
         this.startTime = LocalDateTime.now();
         this.endTime = null;
+        this.errorCount = 0;
     }
 
     public String getOriginalText() {
@@ -44,11 +46,12 @@ public class Session {
     @Override
     public String toString() {
         return new StringBuilder("Session:\n")
-                .append("originalText: '").append(originalText).append("'\n")
-                .append("enteredText: '").append(enteredText).append("'\n")
-                .append("startTime: ").append(startTime).append("'\n")
-                .append("endTime: ").append(endTime).append("'\n")
+                .append("original text: '").append(originalText).append("'\n")
+                .append("entered text: '").append(enteredText).append("'\n")
+                .append("start time: ").append(startTime).append("'\n")
+                .append("end time: ").append(endTime).append("'\n")
                 .append("finished: ").append(isFinished()).append("'\n")
+                .append("error count: ").append(errorCount).append("\n")
                 .toString();
     }
 }
