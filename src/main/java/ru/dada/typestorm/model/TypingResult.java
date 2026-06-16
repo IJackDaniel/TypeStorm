@@ -1,20 +1,21 @@
 package ru.dada.typestorm.model;
 
-public class SessionResult {
-    private final Session session;
+public class TypingResult {
+
+    private final TypingSession typingSession;
     private final double wpm;
     private final double accuracy;
     private final int durationSeconds;
 
-    public SessionResult(Session session, double wpm, double accuracy, int durationSeconds, int errorCount) {
-        this.session = session;
+    public TypingResult(TypingSession typingSession, double wpm, double accuracy, int durationSeconds) {
+        this.typingSession = typingSession;
         this.wpm = wpm;
         this.accuracy = accuracy;
         this.durationSeconds = durationSeconds;
     }
 
-    public Session getSession() {
-        return this.session;
+    public TypingSession getSession() {
+        return this.typingSession;
     }
 
     public double getWpm() {
@@ -39,11 +40,11 @@ public class SessionResult {
 
     @Override
     public String toString() {
-        return new StringBuilder(this.session.toString())
+        return new StringBuilder(this.typingSession.toString())
                 .append("Result of the session:\n")
                 .append("words per minute: ").append(this.wpm).append("'\n")
                 .append("accuracy: ").append(this.accuracy).append("'\n")
-                .append("duration (in seconds): ").append(this.durationSeconds).append("'")
+                .append("duration: ").append(this.durationSeconds).append("'")
                 .toString();
     }
 }
