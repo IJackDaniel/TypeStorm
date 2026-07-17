@@ -6,8 +6,12 @@ import ru.dada.typestorm.model.TypingSession;
 import java.time.Duration;
 
 public class SessionCalculator {
-    private WpmCalculator wpmCalculator;
-    private AccuracyCalculator accuracyCalculator;
+    private final WpmCalculator wpmCalculator;
+    private final AccuracyCalculator accuracyCalculator;
+
+    private final double DEFAULT_WPM = 0.0;
+    private final double DEFAULT_ACCURACY = 100.0;
+    private final int DEFAULT_DURATION = 0;
 
     public SessionCalculator(WpmCalculator wpmCalculator, AccuracyCalculator accuracyCalculator) {
         this.wpmCalculator = wpmCalculator;
@@ -19,27 +23,27 @@ public class SessionCalculator {
             throw new IllegalArgumentException("Session is not finished");
         }
 
-        int duration = calculateDuration(session);
+        int duration = this.calculateDuration(session);
         if (duration == 0) {
-            return new TypingResult(session, 0.0, 0.0, 0);
+            return new TypingResult(session, this.DEFAULT_WPM, this.DEFAULT_ACCURACY, this.DEFAULT_DURATION);
         }
         double accuracy = calculateAccuracy(session);
-        double wpm = calculateWpm(session);
+        double wpm = calculateWpm(session, duration);
 
         return new TypingResult(session, wpm, accuracy, duration);
     }
 
-    public int calculateDuration(TypingSession session) {
+    private int calculateDuration(TypingSession session) {
         Duration duration = Duration.between(session.getStartTime(), session.getEndTime());
         return (int) duration.getSeconds();
     }
 
-    public double calculateAccuracy(TypingSession session) {
+    private double calculateAccuracy(TypingSession session) {
         return this.accuracyCalculator.calculateAccuracy(session.getOriginalText(), session.getEnteredText());
     }
 
-    public double calculateWpm(TypingSession session) {
+    private double calculateWpm(TypingSession session, int duration) {
         int symbolsCount = session.getEnteredText().length();
-        return this.wpmCalculator.calculateWpm(this.calculateDuration(session), symbolsCount);
+        return this.wpmCalculator.calculateWpm(duration, symbolsCount);
     }
 }
