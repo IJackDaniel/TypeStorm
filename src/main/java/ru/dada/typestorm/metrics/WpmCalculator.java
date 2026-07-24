@@ -10,11 +10,15 @@ public class WpmCalculator {
 
     /**
      * Подсчёт скорости печати WPM - Words Per Minute
-     * @param sessionDuration длительность сессии
+     * @param sessionDuration длительность сессии (должна быть >0)
      * @param symbolsCount количество набранных символов
      * @return скорость печати (слов в минуту)
+     * @throws IllegalArgumentException если длительность сессии <= 0
      */
     public double calculateWpm(int sessionDuration, int symbolsCount) {
+        if (sessionDuration <= 0) {
+            throw new IllegalArgumentException("Длительность сессии должна быть > 0");
+        }
         /*
         sps - symbols per second
         spm - symbols per minute
