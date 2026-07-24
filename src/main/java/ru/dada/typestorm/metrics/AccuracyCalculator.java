@@ -1,7 +1,16 @@
 package ru.dada.typestorm.metrics;
 
-public class AccuracyCalculator {
 
+/**
+ * Класс для подсчёта accuracy (аккуратность/точность)
+ */
+public class AccuracyCalculator {
+    /**
+     * Вычисляет accuracy (аккуратность/точность)
+     * @param originalText исходный текст
+     * @param typedText проверяемый текст
+     * @return процент совпадения текстов
+     */
     public double calculateAccuracy(String originalText, String typedText) {
         if (originalText.length() > typedText.length()) {
             originalText = originalText.substring(0, typedText.length());
