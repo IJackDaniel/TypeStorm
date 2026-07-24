@@ -2,6 +2,9 @@ package ru.dada.typestorm.model;
 
 import jakarta.persistence.*;
 
+/**
+ * Entity класс для одного слова
+ */
 @Entity
 @Table(name = "words")
 public class Word {
