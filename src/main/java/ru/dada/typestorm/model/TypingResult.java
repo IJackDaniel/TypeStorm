@@ -1,5 +1,8 @@
 package ru.dada.typestorm.model;
 
+/**
+ * Класс - результат сессии, со всеми замерами
+ */
 public class TypingResult {
 
     private final TypingSession typingSession;

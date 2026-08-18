@@ -16,6 +16,13 @@ public class TextService {
         this.wordService = wordService;
     }
 
+    /**
+     * Генерирует случайную последовательность слов из указанного частотного лимита
+     * @param limit частотный лимит (топ limit слов)
+     * @param count длина последовательности
+     * @param dictionaryType тип используемого словаря
+     * @return Строка из случайно выбранных слов
+     */
     // Параметров может стать больше, поэтому в будущем можно создать класс TypingSettings
     public String getRandomStringSequenceFromTopDictionary(int limit, int count, DictionaryType dictionaryType) {
         List<Word> words = wordService.getTopWordsFromDictionary(dictionaryType, limit);
@@ -23,6 +30,12 @@ public class TextService {
         return this.joinWords(randomWords);
     }
 
+    /**
+     * Генерируем случайную последовательность слов из указанного словаря
+     * @param count длина последовательности
+     * @param dictionaryType тип используемого словаря
+     * @return Строка из случайно выбранных слов
+     */
     public String getRandomStringSequenceFromDictionary(int count, DictionaryType dictionaryType) {
         List<Word> words = wordService.getAllWordsFromDictionary(dictionaryType);
         List<Word> randomWords = selectRandomWords(words, count);

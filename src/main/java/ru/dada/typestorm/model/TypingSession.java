@@ -2,6 +2,9 @@ package ru.dada.typestorm.model;
 
 import java.time.LocalDateTime;
 
+/**
+ * Класс, представляющий одну сессию печати
+ */
 public class TypingSession {
     private final String originalText;
     private String enteredText;
